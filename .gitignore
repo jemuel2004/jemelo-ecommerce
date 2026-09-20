@@ -1,0 +1,24 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Uploads (user-generated files)
+assets/uploads/products/*
+assets/uploads/categories/*
+assets/uploads/avatars/*
+!assets/uploads/products/.gitkeep
+!assets/uploads/categories/.gitkeep
+!assets/uploads/avatars/.gitkeep
+
+# OS / editor
+Thumbs.db
+Desktop.ini
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log

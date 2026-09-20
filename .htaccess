@@ -1,0 +1,29 @@
+# ── Security headers ─────────────────────────────────────
+Options -Indexes
+ServerSignature Off
+
+# Prevent direct access to PHP files in ajax/ except via proper calls
+<FilesMatch "^setup\.php$">
+  # Comment out after setup:
+  # Deny from all
+</FilesMatch>
+
+# Protect config directory
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Redirect root to customer shop or login
+  RewriteRule ^$ index.php [L]
+
+  # Block access to .env, .git, etc.
+  RewriteRule ^\.env - [F,L]
+  RewriteRule ^\.git - [F,L]
+</IfModule>
+
+# Prevent script execution in uploads
+<IfModule mod_rewrite.c>
+  RewriteRule ^assets/uploads/.*\.(php|php3|php4|php5|phtml|pl|py|jsp|asp|sh|cgi)$ - [F,L]
+</IfModule>
+
+# Set default charset
+AddDefaultCharset UTF-8
